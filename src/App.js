@@ -34,7 +34,19 @@ function App() {
 
   }
 
+  const handleSort = (distance) => {
+    const distanceValue = [...Swiggy]
+    if (distance === "near") {
+      const distanceNear = distanceValue.sort((a, b) => a.distance - a.distance)
+      setData(distanceNear)
+      return
+    }
+    const distanceFar = distanceValue.sort((a, b) => b.distance - a.distance)
+    setData(distanceFar)
 
+  }
+
+  console.log("done")
 
   return (
     <div className='mainContainer' >
@@ -47,7 +59,11 @@ function App() {
         <li onClick={() => handleFilter("American")} > American</li>
       </ul>
 
-
+      <p>sort</p>
+      <ul className='filterAndSortContainer' >
+        <li onClick={() => handleSort("near")} >near to far</li>
+        <li onClick={() => handleSort("far")} >far to near</li>
+      </ul>
       <div className='CaroselContainer' >
         {Data.map(d => (
           <CaroselCards name={d.hotel_Name} cusinie={d.cuisine} rating={d.rating} />
