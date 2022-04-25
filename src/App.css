@@ -6,14 +6,11 @@
   padding: 0;
 }
 
-.filterAndSortContainer {
-  background-color: white;
+
+
+.CaroselContainer {
   display: flex;
-  width: 500px;
-  justify-content: space-around;
-  height: 30px;
-  align-items: center;
-  cursor: pointer;
-  list-style: none;
-  box-shadow: 5px 5px 5px grey;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%
 }
