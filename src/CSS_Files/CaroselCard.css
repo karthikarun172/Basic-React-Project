@@ -1,0 +1,12 @@
+.CarocelDivContainer {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    height: 100px;
+    width: 300px;
+    background-color: #F9FFA4;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px grey;
+    border: none;
+
+}

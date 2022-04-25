@@ -24,7 +24,6 @@ function App() {
   const [AllData, setAllData] = useState(Swiggy)
 
   const handleFilter = (filterValue) => {
-
     const value = [...Swiggy];
     if (filterValue === "all") {
       setData(AllData)
@@ -48,10 +47,10 @@ function App() {
   }
 
   return (
-    <div style={{ height: "100vh", width: "100%", backgroundColor: "#FFA1A1", marginTop: "-21px", padding: 0 }} >
+    <div className='mainContainer' >
       <h1>Hotels near you</h1>
       <p>filters</p>
-      <ul>
+      <ul className='filterAndSortContainer' >
         <li onClick={() => handleFilter("all")} >all</li>
         <li onClick={() => handleFilter("Indian")} >Indian</li>
         <li onClick={() => handleFilter("Mexican")} >Mexican</li>
@@ -59,7 +58,7 @@ function App() {
       </ul>
 
       <p>sort</p>
-      <ul>
+      <ul className='filterAndSortContainer' >
         <li onClick={() => handleSort("near")} >near to far</li>
         <li onClick={() => handleSort("far")} >far to near</li>
       </ul>

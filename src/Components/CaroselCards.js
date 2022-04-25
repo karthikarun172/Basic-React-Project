@@ -1,8 +1,9 @@
 import React from 'react'
+import "../CSS_Files/CaroselCard.css"
 
 function CaroselCards({ name, cusinie, rating }) {
     return (
-        <div style={{ display: "flex", justifyContent: "space-around", margin: "10px", height: "100px", width: "300px", backgroundColor: "#F9FFA4", borderRadius: "20px", boxShadow: `5px 5px 5px grey`, boder: "none" }} >
+        <div className='CarocelDivContainer'  >
             <div>
                 <h3>{name}</h3>
                 <p>{cusinie}</p>
