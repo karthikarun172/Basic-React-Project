@@ -21,13 +21,34 @@ function App() {
   ]
 
   const [Data, setData] = useState(Swiggy)
+  const [AllData, setAllData] = useState(Swiggy)
+
+  const handleFilter = (filterValue) => {
+    const value = [...Swiggy];
+    if (filterValue === "all") {
+      setData(AllData)
+      return
+    }
+    const filtering = value.filter(f => f.cuisine === filterValue)
+    setData(filtering)
+
+  }
 
 
 
   return (
     <div className='mainContainer' >
       <h1>Hotels near you</h1>
-      <div className='CaroselContainer'>
+      <p>filters</p>
+      <ul className='filterAndSortContainer' >
+        <li onClick={() => handleFilter("all")} >all</li>
+        <li onClick={() => handleFilter("Indian")} >Indian</li>
+        <li onClick={() => handleFilter("Mexican")} >Mexican</li>
+        <li onClick={() => handleFilter("American")} > American</li>
+      </ul>
+
+
+      <div className='CaroselContainer' >
         {Data.map(d => (
           <CaroselCards name={d.hotel_Name} cusinie={d.cuisine} rating={d.rating} />
         ))}
