@@ -1,9 +1,10 @@
 .mainContainer {
-  height: 100vh;
+  height: 105vh;
   width: 100%;
   background-color: #FFA1A1;
   margin-top: -21px;
   padding: 0;
+  overflow: scroll;
 }
 
 .filterAndSortContainer {

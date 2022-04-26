@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import CaroselCards from './Components/CaroselCards';
+import Paginate from './Components/Paginate';
 
 function App() {
   const Swiggy = [
@@ -22,9 +23,13 @@ function App() {
 
   const [Data, setData] = useState(Swiggy)
   const [AllData, setAllData] = useState(Swiggy)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postPerPage, setPostPerPage] = useState(4)
+
 
   const handleFilter = (filterValue) => {
     const value = [...Swiggy];
+    setCurrentPage(1)
     if (filterValue === "all") {
       setData(AllData)
       return
@@ -37,7 +42,7 @@ function App() {
   const handleSort = (distance) => {
     const distanceValue = [...Swiggy]
     if (distance === "near") {
-      const distanceNear = distanceValue.sort((a, b) => a.distance - a.distance)
+      const distanceNear = distanceValue.sort((a, b) => a.distance - b.distance)
       setData(distanceNear)
       return
     }
@@ -46,7 +51,11 @@ function App() {
 
   }
 
-  console.log("done")
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  let currentPost = Data.slice(indexOfFirstPost, indexOfLastPost)
 
   return (
     <div className='mainContainer' >
@@ -64,11 +73,13 @@ function App() {
         <li onClick={() => handleSort("near")} >near to far</li>
         <li onClick={() => handleSort("far")} >far to near</li>
       </ul>
+
       <div className='CaroselContainer' >
-        {Data.map(d => (
+        {currentPost.map(d => (
           <CaroselCards name={d.hotel_Name} cusinie={d.cuisine} rating={d.rating} />
         ))}
       </div>
+      <Paginate postPerPage={postPerPage} totalPost={Swiggy.length} paginate={paginate} />
     </div>
   );
 }
